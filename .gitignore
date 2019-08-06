@@ -1,5 +1,7 @@
 # Gauge - metadata dir
 .gauge
+.idea
+.vscode
 
 # Gauge - log files dir
 logs
