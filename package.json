@@ -5,22 +5,25 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "@testing-library/cypress": "^4.0.5",
     "babel-eslint": "^9.0.0",
     "cypress": "^3.4.1",
+    "cypress-testing-library": "^4.0.0",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^3.6.0",
     "eslint-plugin-cypress": "^2.6.1",
     "flow-bin": "^0.81.0",
     "husky": "^3.0.2",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "test-data-bot": "^0.8.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
     "lint": "eslint cypress",
-    "flow": "flow",
     "format": "npm run prettier -- --write",
     "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)\"",
-    "validate": "npm run lint && npm run format && npm run flow"
+    "validate": "npm run lint && npm run format"
   },
   "husky": {
     "hooks": {

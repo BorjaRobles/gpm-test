@@ -1,1 +1,6 @@
-{}
+{
+  "chromeWebSecurity": false,
+  "watchForFileChanges": false,
+  "baseUrl": "https://app.forcemanager.net",
+  "integrationFolder": "cypress/e2e"
+}
