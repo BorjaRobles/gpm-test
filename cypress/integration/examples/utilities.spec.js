@@ -121,7 +121,7 @@ context('Utilities', () => {
     function waitOneSecond() {
       // return a promise that resolves after 1 second
       // @ts-ignore TS2351 (new Cypress.Promise)
-      return new Cypress.Promise((resolve, reject) => {
+      return new Cypress.Promise(resolve => {
         setTimeout(() => {
           // set waited to true
           waited = true

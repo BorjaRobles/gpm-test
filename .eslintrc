@@ -3,11 +3,14 @@
   "parserOptions": {
     "ecmaVersion": "2019"
   },
+
+  "plugins": ["eslint-plugin-cypress"],
   "extends": ["eslint:recommended", "eslint-config-prettier"],
   "rules": {
     "no-console": "off"
   },
   "env": {
+    "cypress/globals": true,
     "browser": true,
     "amd": true,
     "node": true

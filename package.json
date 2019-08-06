@@ -11,7 +11,7 @@
     "eslint-config-prettier": "^3.6.0",
     "eslint-plugin-cypress": "^2.6.1",
     "flow-bin": "^0.81.0",
-    "lint-staged": "^9.2.1",
+    "husky": "^3.0.2",
     "prettier": "^1.18.2"
   },
   "scripts": {
@@ -20,8 +20,12 @@
     "flow": "flow",
     "format": "npm run prettier -- --write",
     "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)\"",
-    "validate": "npm run lint && npm run format && npm run flow",
-    "precommit": "lint-staged && npm run flow"
+    "validate": "npm run lint && npm run format && npm run flow"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run validate"
+    }
   },
   "author": "Borja Robles",
   "license": "ISC"
