@@ -22,13 +22,11 @@
     "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)\"",
     "validate": "npm run lint && npm run prettier -- --list-different && npm run flow"
   },
-
   "husky": {
     "hooks": {
-      "pre-commit": "npm run validate"
+      "pre-commit": "npm run format"
     }
   },
-
   "author": "Borja Robles",
   "license": "ISC"
 }
