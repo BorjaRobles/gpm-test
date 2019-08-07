@@ -6,7 +6,7 @@ context('Documents', () => {
       cy.fixture('/users/admin.json').then(user => {
         cy.assertLoggedInAs(user)
           .visit('/page.aspx#/documents')
-          .clearLinkDocuments()
+          .clearDocuments()
       })
     })
 
@@ -39,7 +39,6 @@ context('Documents', () => {
     it('Appears on recents view', () => {
       const docLink = documentLinkBuilder()
       cy.createLinkDocument(docLink)
-        .reload()
         .getByText(docLink.name, {exact: false})
         .should('be.visible')
         .get('.recent')
@@ -52,7 +51,6 @@ context('Documents', () => {
     it('Are findable', () => {
       const docLink = documentLinkBuilder()
       cy.createLinkDocument(docLink)
-        .reload()
         .get('.react-suggest-icon')
         .click()
         .getByPlaceholderText(/Search document/i)
@@ -64,8 +62,6 @@ context('Documents', () => {
     it('can be deleted', () => {
       const docLink = documentLinkBuilder()
       cy.createLinkDocument(docLink)
-        .reload()
-        .documentsReady()
       cy.contains('div', docLink.name)
         .closest('[role="row"]')
         .click()
@@ -80,14 +76,12 @@ context('Documents', () => {
     it('can be edited', () => {
       const docLink = documentLinkBuilder()
       cy.createLinkDocument(docLink)
-        .reload()
-        .documentsReady()
       cy.contains('div', docLink.name)
         .closest('[role="row"]')
         .click()
         .get('.documents-menu-options-container > :nth-child(2)')
         .click()
-        .get(`[value='QA -  ${docLink.name}']`)
+        .get('[id*="undefined-object"]')
         .click()
         .type('{home}EDITED ')
         .getByText(/save/i)
