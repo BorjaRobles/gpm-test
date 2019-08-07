@@ -1,8 +1,8 @@
-Cypress.Commands.add('assertLoggedInAs', () => {
+Cypress.Commands.add('assertLoggedInAs', user => {
   cy.visit('/Login.aspx?lang=EN')
     .getByText(/next/i)
     .get('#LoginControl_UserName')
-    .type('{home}{del}admin_qa{enter}')
+    .type(`{home}{del}${user.username}{enter}`)
     .focused()
-    .type('demo4321{enter}')
+    .type(`${user.password}{enter}`)
 })
