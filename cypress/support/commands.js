@@ -6,3 +6,11 @@ Cypress.Commands.add('assertLoggedInAs', user => {
     .focused()
     .type(`${user.password}{enter}`)
 })
+
+Cypress.Commands.add('getById', id => {
+  cy.get(`#${id}`)
+})
+
+Cypress.Commands.add('getByPartialId', id => {
+  cy.get(`[id*="${id}"]`)
+})

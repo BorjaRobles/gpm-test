@@ -39,6 +39,7 @@ context('Documents', () => {
     it('Appears on recents view', () => {
       const docLink = documentLinkBuilder()
       cy.createLinkDocument(docLink)
+
         .getByText(docLink.name, {exact: false})
         .should('be.visible')
         .get('.recent')
@@ -51,6 +52,7 @@ context('Documents', () => {
     it('Are findable', () => {
       const docLink = documentLinkBuilder()
       cy.createLinkDocument(docLink)
+
         .get('.react-suggest-icon')
         .click()
         .getByPlaceholderText(/Search document/i)
@@ -62,6 +64,7 @@ context('Documents', () => {
     it('can be deleted', () => {
       const docLink = documentLinkBuilder()
       cy.createLinkDocument(docLink)
+
       cy.contains('div', docLink.name)
         .closest('[role="row"]')
         .click()
@@ -76,12 +79,13 @@ context('Documents', () => {
     it('can be edited', () => {
       const docLink = documentLinkBuilder()
       cy.createLinkDocument(docLink)
+
       cy.contains('div', docLink.name)
         .closest('[role="row"]')
         .click()
         .get('.documents-menu-options-container > :nth-child(2)')
         .click()
-        .get('[id*="undefined-object"]')
+        .getByPartialId('undefined-object')
         .click()
         .type('{home}EDITED ')
         .getByText(/save/i)
