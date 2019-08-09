@@ -1,56 +1,56 @@
-Cypress.Commands.add('clearDocuments', () => {
+const visitDocuments = () => {
+  cy.visit('/page.aspx#/documents')
+    //.waitForXHR('GET', '/**/sfm?')
+    .finishLoading()
+    .get('.fm-tree-row-container')
+    .contains(/Documents/i)
+}
+
+const goToRecent = () => {
   cy.get('.fm-single-node-navigator-item')
     .contains('span', 'Recents')
-    .click()
-    .click()
-    .click()
-    .click()
+    .click({force: true})
+    .finishLoading()
+}
 
-  cy.deleteDocuments()
+const clearDocuments = () => {
+  goToRecent()
+  deleteDocuments()
   cy.get('.fm-tree-navigator-text')
     .click()
-    .deleteDocuments()
-})
+    .finishLoading()
+  deleteDocuments()
+}
 
-Cypress.Commands.add('createLinkDocument', doc => {
-  cy.waitUntil(() =>
-    cy
-      .window()
-      .then(win =>
-        Boolean(JSON.parse(win.sessionStorage.getItem('config_web4'))),
-      ),
-  )
-  cy.window()
-    .then(win => {
-      cy.request({
-        method: 'POST',
-        url: 'https://proxy.forcemanager.net/documents/link', // baseUrl is prepended to url
-        //url: 'https://proxypre.forcemanager.net/documents/link', // baseUrl is prepended to url
-        //form: false, // indicates the body should be form urlencoded and sets Content-Type: application/x-www-form-urlencoded headers
-        body: [
-          {
-            name: 'strFileDescription',
-            value: `QA -  ${doc.name}`,
-          },
-          {name: 'strLink', value: doc.link},
-          {name: 'idLibraryFolder', value: '-1'},
-          {name: 'blnIsSynchronized', value: 'false'},
-          {name: 'strExtension', value: ''},
-        ],
-
-        headers: {
-          'x-fm-device-type': '101',
-          'x-fm-version': '3',
-          'x-fm-token': JSON.parse(win.sessionStorage.getItem('config_web4'))
-            .token,
+const createLinkDocument = doc => {
+  cy.window().then(win => {
+    cy.request({
+      method: 'POST',
+      url: 'https://proxy.forcemanager.net/documents/link', // baseUrl is prepended to url
+      //url: 'https://proxypre.forcemanager.net/documents/link', // baseUrl is prepended to url
+      //form: false, // indicates the body should be form urlencoded and sets Content-Type: application/x-www-form-urlencoded headers
+      body: [
+        {
+          name: 'strFileDescription',
+          value: `QA -  ${doc.name}`,
         },
-      })
-    })
-    .reload()
-    .waitUntil(() => cy.contains('Name').then(el => Boolean(el)))
-})
+        {name: 'strLink', value: doc.link},
+        {name: 'idLibraryFolder', value: '-1'},
+        {name: 'blnIsSynchronized', value: 'false'},
+        {name: 'strExtension', value: ''},
+      ],
 
-Cypress.Commands.add('deleteDocuments', () => {
+      headers: {
+        'x-fm-device-type': '101',
+        'x-fm-version': '3',
+        'x-fm-token': JSON.parse(win.sessionStorage.getItem('config_web4'))
+          .token,
+      },
+    }).then(() => cy.reload())
+  })
+}
+
+const deleteDocuments = () => {
   cy.window().then(win => {
     let list = JSON.parse(win.sessionStorage.getItem('persist:fm_store'))
       .entityList
@@ -86,4 +86,6 @@ Cypress.Commands.add('deleteDocuments', () => {
       }
     })
   })
-})
+}
+
+export default {visitDocuments, goToRecent, clearDocuments, createLinkDocument}

@@ -1,3 +1,7 @@
 {
-  "prettier.eslintIntegration": true
+  "prettier.eslintIntegration": true,
+  "standard.enable": false,
+  "eslint.enable": true,
+  "typescript.surveys.enabled": false,
+  "editor.formatOnSave": false
 }
