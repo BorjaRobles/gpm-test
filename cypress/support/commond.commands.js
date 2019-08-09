@@ -5,5 +5,5 @@ export const loginAs = user => {
     .type(`{home}{del}${user.username}{enter}`)
     .focused()
     .type(`${user.password}{enter}`)
-    .waitForXHR('POST', '/api/authenticate/v1/byProxy?format=web')
+    .waitForXHR('POST', '/ASMX/Proxy.asmx/GetLoginToken')
 }

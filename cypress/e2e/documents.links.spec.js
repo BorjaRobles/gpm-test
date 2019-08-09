@@ -35,6 +35,7 @@ context('Documents', () => {
           .click()
           .waitForXHR('GET', '/**/sfm?folder=-1')
 
+
         cy.contains('div', docLink.name)
           .closest('[role="row"]')
           .should('be.visible')

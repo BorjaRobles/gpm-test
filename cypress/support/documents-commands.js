@@ -8,8 +8,8 @@ const visitDocuments = () => {
 
 const goToRecent = () => {
   cy.get('.fm-single-node-navigator-item')
-    .contains('span', 'Recents')
-    .click({force: true})
+    .contains('span', /Recents/i)
+    .click()
     .finishLoading()
 }
 
@@ -47,8 +47,7 @@ const createLinkDocument = doc => {
           .token,
       },
     }).then(() => cy.reload())
-        //.waitForXHR', (method, url)
-
+    //.waitForXHR', (method, url)
   })
 }
 

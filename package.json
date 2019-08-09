@@ -17,7 +17,8 @@
     "flow-bin": "^0.81.0",
     "husky": "^3.0.2",
     "prettier": "^1.18.2",
-    "test-data-bot": "^0.8.0"
+    "test-data-bot": "^0.8.0",
+    "typescript": "^3.5.3"
   },
   "scripts": {
     "cy:run": "cypress run",
