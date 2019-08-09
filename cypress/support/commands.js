@@ -13,7 +13,7 @@ Cypress.Commands.add('waitForXHR', (method, url) => {
       url: url,
     })
     .as(`${url}`)
-    .wait(`@${url}`)
+    .wait(`@${url}`, {timeout: 10000})
 })
 
 Cypress.Commands.add('finishLoading', () => {

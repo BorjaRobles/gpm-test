@@ -47,6 +47,8 @@ const createLinkDocument = doc => {
           .token,
       },
     }).then(() => cy.reload())
+        //.waitForXHR', (method, url)
+
   })
 }
 
