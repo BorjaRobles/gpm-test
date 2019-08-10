@@ -9,24 +9,37 @@
     "babel-eslint": "^9.0.0",
     "cypress": "^3.4.1",
     "cypress-file-upload": "^3.3.3",
+    "cypress-multi-reporters": "^1.2.1",
     "cypress-testing-library": "^4.0.0",
     "cypress-wait-until": "^1.2.3",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^3.6.0",
     "eslint-plugin-cypress": "^2.6.1",
     "flow-bin": "^0.81.0",
+    "fs-extra": "^8.1.0",
     "husky": "^3.0.2",
+    "mocha": "6.1.4",
+    "mocha-junit-reporter": "^1.23.1",
+    "mochawesome": "3.1.1",
+    "mochawesome-merge": "1.0.4",
+    "mochawesome-report-generator": "^3.1.5",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.18.2",
     "test-data-bot": "^0.8.0",
     "typescript": "^3.5.3"
   },
   "scripts": {
+    "cy:run:report": "npm-run-all -c combine-reports generate-report",
+    "cleanup": "rm -fr mochareports/* && rm -rf cypress/reports/*",
+    "cy:test": "npm-run-all -c -s cleanup cy:run combine-reports generate-report",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "lint": "eslint cypress",
     "format": "npm run prettier -- --write",
     "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)\"",
-    "validate": "npm run lint && npm run format"
+    "validate": "npm run lint && npm run format",
+    "combine-reports": "mochawesome-merge --reportDir cypress/reports/mocha > mochareports/report-$(date +'%Y-%m-%d-%H:%M:%S').json",
+    "generate-report": "marge mochareports/*.json -f report-$(date +'%Y-%m-%d-%H:%M:%S') -o mochareports"
   },
   "husky": {
     "hooks": {

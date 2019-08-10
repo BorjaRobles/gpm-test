@@ -2,5 +2,10 @@
   "chromeWebSecurity": false,
   "watchForFileChanges": true,
   "baseUrl": "https://app.forcemanager.net",
-  "integrationFolder": "cypress/e2e"
+  "integrationFolder": "cypress/e2e",
+
+  "reporter": "cypress-multi-reporters",
+  "reporterOptions": {
+    "configFile": "reporterOpts.json"
+  }
 }
