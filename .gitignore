@@ -15,3 +15,4 @@ reports
 node_modules
 screenshots
 videos
+cypress/report

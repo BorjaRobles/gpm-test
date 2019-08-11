@@ -42,7 +42,7 @@ context('Documents', () => {
       })
     })
 
-    it.only('Appears on recent view', () => {
+    it('Appears on recent view', () => {
       const docLink = documentLinkBuilder()
       createLinkDocument(docLink)
       cy.get('.recent')

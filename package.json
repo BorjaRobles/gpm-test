@@ -31,10 +31,11 @@
     "yargs": "^13.3.0"
   },
   "scripts": {
-    "e2e:report": "node cypress_runner -b electron",
+    "e2e:report": "node cypress_runner -b electron && node cypress/support/rename.js",
     "cy:run:report": "npm-run-all -c combine-reports generate-report",
     "cleanup": "rm -fr mochareports/* && rm -rf cypress/reports/*",
     "cy:test": "npm-run-all -c -s cleanup cy:run combine-reports generate-report",
+    "rename-images": "node cypress/support/rename.js",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "lint": "eslint cypress",
