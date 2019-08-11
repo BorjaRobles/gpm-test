@@ -1,0 +1,170 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 3,
+    "pending": 0,
+    "failures": 2,
+    "start": "2019-08-11T10:36:38.340Z",
+    "end": "2019-08-11T10:36:38.340Z",
+    "duration": 80763,
+    "testsRegistered": 5,
+    "passPercent": 60,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "warning",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "58474267-eb23-43f5-b6a1-7b6bc0bc8031",
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "3a95ff5e-5fc7-4586-924c-cf31bdfc9d74",
+        "title": "Documents",
+        "fullFile": "",
+        "file": "",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [],
+        "suites": [
+          {
+            "uuid": "457e5a28-71c1-4b84-974c-728da9ff4242",
+            "title": "Created link on documments",
+            "fullFile": "",
+            "file": "",
+            "beforeHooks": [],
+            "afterHooks": [],
+            "tests": [
+              {
+                "title": "Appears on list view",
+                "fullTitle": "Documents Created link on documments Appears on list view",
+                "duration": 26588,
+                "state": "failed",
+                "pass": false,
+                "fail": true,
+                "pending": false,
+                "code": "cy.fixture('/users/admin.json').then(function (user) {\n  var docLink = (0, _generate.documentLinkBuilder)();\n  cy.get('.fm-button__content').click().getByText(/add link/i).click().getByText(/nombre/i).click({\n    force: true\n  }).focused().type(\"QA -  \".concat(docLink.name), {\n    delay: 40\n  }).getByText(/^URL/).click({\n    force: true\n  }).focused().type(docLink.link, {\n    delay: 30\n  }).getByText(/^save/i).click().waitForXHR('GET', '/**/sfm?folder=-1');\n  cy.contains('div', docLink.name).closest('[role=\"row\"]').should('be.visible').and('contain', user.name);\n});",
+                "err": {
+                  "message": "CypressError: Timed out retrying: Expected to find content: 'Gislason Inc' within the selector: 'div' but never did.",
+                  "estack": "CypressError: Timed out retrying: Expected to find content: 'Gislason Inc' within the selector: 'div' but never did.\n    at Object.cypressErr (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:85348:11)\n    at Object.throwErr (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:85303:18)\n    at Object.throwErrByPath (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:85335:17)\n    at retry (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:77321:16)\n    at onFailFn (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:68422:16)\n    at tryCatcher (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:118962:23)\n    at Promise._settlePromiseFromHandler (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:116898:31)\n    at Promise._settlePromise (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:116955:18)\n    at Promise._settlePromise0 (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:117000:10)\n    at Promise._settlePromises (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:117075:18)\n    at Async../node_modules/bluebird/js/release/async.js.Async._drainQueue (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:113687:16)\n    at Async../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:113697:10)\n    at Async.drainQueues (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:113571:14)\n    at <anonymous>"
+                },
+                "isRoot": false,
+                "uuid": "5ee2e056-c562-4afc-9ea5-d36c080010fb",
+                "isHook": false,
+                "skipped": false
+              },
+              {
+                "title": "Appears on recent view",
+                "fullTitle": "Documents Created link on documments Appears on recent view",
+                "duration": 18597,
+                "state": "failed",
+                "pass": false,
+                "fail": true,
+                "pending": false,
+                "code": "var docLink = (0, _generate.documentLinkBuilder)();\n(0, _documentsCommands.createLinkDocument)(docLink);\ncy.get('.recent').click().should('have.class', 'selected').getByText(docLink.name, {\n  exact: false\n}).should('be.visible');",
+                "err": {
+                  "message": "CypressError: Timed out retrying: expected '<div.fm-single-node-navigator-item.recent>' to have class 'selected'",
+                  "estack": "CypressError: Timed out retrying: expected '<div.fm-single-node-navigator-item.recent>' to have class 'selected'\n    at Object.cypressErr (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:85348:11)\n    at Object.throwErr (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:85303:18)\n    at Object.throwErrByPath (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:85335:17)\n    at retry (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:77321:16)\n    at onFailFn (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:68422:16)\n    at tryCatcher (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:118962:23)\n    at Promise._settlePromiseFromHandler (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:116898:31)\n    at Promise._settlePromise (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:116955:18)\n    at Promise._settlePromise0 (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:117000:10)\n    at Promise._settlePromises (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:117075:18)\n    at Async../node_modules/bluebird/js/release/async.js.Async._drainQueue (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:113687:16)\n    at Async../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:113697:10)\n    at Async.drainQueues (https://app.forcemanager.net/__cypress/runner/cypress_runner.js:113571:14)\n    at <anonymous>"
+                },
+                "isRoot": false,
+                "uuid": "dbad75f0-74c6-44de-b92f-5bd6005b638b",
+                "isHook": false,
+                "skipped": false
+              },
+              {
+                "title": "Are findable",
+                "fullTitle": "Documents Created link on documments Are findable",
+                "duration": 12632,
+                "state": "passed",
+                "speed": "slow",
+                "pass": true,
+                "fail": false,
+                "pending": false,
+                "code": "var docLink = (0, _generate.documentLinkBuilder)();\n(0, _documentsCommands.createLinkDocument)(docLink);\ncy.get('.react-suggest-icon').click().getByPlaceholderText(/Search document/i).type(\"\".concat(docLink.name, \"{enter}\")).getByText(docLink.name, {\n  exact: false\n}).should('be.visible');",
+                "err": {},
+                "isRoot": false,
+                "uuid": "650cb2ca-b729-4d86-8b96-04b0dbf132c2",
+                "isHook": false,
+                "skipped": false
+              },
+              {
+                "title": "can be deleted",
+                "fullTitle": "Documents Created link on documments can be deleted",
+                "duration": 12708,
+                "state": "passed",
+                "speed": "slow",
+                "pass": true,
+                "fail": false,
+                "pending": false,
+                "code": "var docLink = (0, _generate.documentLinkBuilder)();\n(0, _documentsCommands.createLinkDocument)(docLink);\ncy.contains('div', docLink.name).closest('[role=\"row\"]').click().get('.documents-menu-options-container > :nth-child(3)').click().get('.dialogBlockOutsideClick').contains('span span', 'Delete').click();\ncy.contains(docLink.name).should('not.be.visible');",
+                "err": {},
+                "isRoot": false,
+                "uuid": "79dc3e25-3f68-4bc0-88b1-06a4b55d4289",
+                "isHook": false,
+                "skipped": false
+              },
+              {
+                "title": "can be edited",
+                "fullTitle": "Documents Created link on documments can be edited",
+                "duration": 10238,
+                "state": "passed",
+                "speed": "slow",
+                "pass": true,
+                "fail": false,
+                "pending": false,
+                "code": "var docLink = (0, _generate.documentLinkBuilder)();\n(0, _documentsCommands.createLinkDocument)(docLink);\ncy.contains('div', docLink.name).closest('[role=\"row\"]').click().get('.documents-menu-options-container > :nth-child(2)').click().getByPartialId('undefined-object').click().type('{home}EDITED ').getByText(/save/i).click();\ncy.contains(\"EDITED QA -  \".concat(docLink.name)).should('be.visible');",
+                "err": {},
+                "isRoot": false,
+                "uuid": "dc88f55b-6a8e-4e73-8fc7-1fbea6906d46",
+                "isHook": false,
+                "skipped": false
+              }
+            ],
+            "suites": [],
+            "passes": [
+              "650cb2ca-b729-4d86-8b96-04b0dbf132c2",
+              "79dc3e25-3f68-4bc0-88b1-06a4b55d4289",
+              "dc88f55b-6a8e-4e73-8fc7-1fbea6906d46"
+            ],
+            "failures": [
+              "5ee2e056-c562-4afc-9ea5-d36c080010fb",
+              "dbad75f0-74c6-44de-b92f-5bd6005b638b"
+            ],
+            "pending": [],
+            "skipped": [],
+            "duration": 80763,
+            "root": false,
+            "rootEmpty": false,
+            "_timeout": 2000
+          }
+        ],
+        "passes": [],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 0,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 2000
+      }
+    ],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "_timeout": 2000
+  },
+  "copyrightYear": 2019
+}
