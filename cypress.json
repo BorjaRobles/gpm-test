@@ -3,9 +3,14 @@
   "watchForFileChanges": true,
   "baseUrl": "https://app.forcemanager.net",
   "integrationFolder": "cypress/e2e",
-
-  "reporter": "cypress-multi-reporters",
+  "video": false,
+  "reporter": "mochawesome",
   "reporterOptions": {
-    "configFile": "reporterOpts.json"
-  }
+    "reportDir": "cypress/report/mochawesome-report",
+    "overwrite": false,
+    "html": false,
+    "json": true,
+    "timestamp": "mmddyyyy_HHMMss"
+  },
+  "screenshotsFolder": "cypress/report/mochawesome-report/assets"
 }

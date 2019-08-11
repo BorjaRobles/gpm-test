@@ -35,7 +35,6 @@ context('Documents', () => {
           .click()
           .waitForXHR('GET', '/**/sfm?folder=-1')
 
-
         cy.contains('div', docLink.name)
           .closest('[role="row"]')
           .should('be.visible')
@@ -43,7 +42,7 @@ context('Documents', () => {
       })
     })
 
-    it('Appears on recent view', () => {
+    it.only('Appears on recent view', () => {
       const docLink = documentLinkBuilder()
       createLinkDocument(docLink)
       cy.get('.recent')
