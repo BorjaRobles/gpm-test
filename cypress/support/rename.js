@@ -24,6 +24,7 @@ const listDir = (dir, fileList = []) => {
 }
 
 let foundFiles = listDir('cypress/report/mochawesome-report/assets')
+
 foundFiles.forEach(f => {
   fs.renameSync(f.oldSrc, f.newSrc)
 })
