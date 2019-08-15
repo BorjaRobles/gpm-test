@@ -3,5 +3,4 @@ coverage
 dist
 build
 .build
-
-# etc...
+cypress/report
