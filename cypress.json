@@ -1,9 +1,9 @@
 {
   "chromeWebSecurity": false,
   "watchForFileChanges": true,
-  "baseUrl": "https://app.forcemanager.net",
+  "baseUrl": "https://www.dnvgl.com",
   "integrationFolder": "cypress/e2e",
-  "video": false,
+  "video": true,
   "reporter": "mochawesome",
   "reporterOptions": {
     "reportDir": "cypress/report/mochawesome-report",
