@@ -22,6 +22,7 @@ Simple base framework with:
 
 #### Installation
 
+- npm i -D cypress
 - npm install
 
 #### Run tests
