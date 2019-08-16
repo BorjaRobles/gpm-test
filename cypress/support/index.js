@@ -13,7 +13,6 @@ import 'cypress-wait-until'
 //cy.waitUntil(() => cy.window().then(win => win.foo === "bar"));
 
 import './commands'
-import './documents-commands'
 
 // eslint-disable-next-line no-unused-vars
 Cypress.on('uncaught:exception', (err, runnable) => {
